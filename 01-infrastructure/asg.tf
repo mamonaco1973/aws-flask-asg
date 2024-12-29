@@ -5,7 +5,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_high" {
   evaluation_periods  = 2                                          # Consecutive periods to breach threshold
   metric_name         = "CPUUtilization"                          # Metric to monitor
   namespace           = "AWS/EC2"                                 # AWS namespace for the metric
-  period              = 60                                        # Duration of each evaluation period (seconds)
+  period              = 30                                        # Duration of each evaluation period (seconds)
   statistic           = "Average"                                 # Aggregation type for the metric
   threshold           = 80                                        # Threshold for triggering the alarm
   alarm_description   = "Scale up if CPUUtilization > 80% for 2 minutes"
@@ -35,7 +35,7 @@ resource "aws_cloudwatch_metric_alarm" "cpu_low" {
   evaluation_periods  = 2                                         # Consecutive periods to breach threshold
   metric_name         = "CPUUtilization"                          # Metric to monitor
   namespace           = "AWS/EC2"                                 # AWS namespace for the metric
-  period              = 60                                        # Duration of each evaluation period (seconds)
+  period              = 30                                        # Duration of each evaluation period (seconds)
   statistic           = "Average"                                 # Aggregation type for the metric
   threshold           = 5                                         # Threshold for triggering the alarm
   alarm_description   = "Scale down if CPUUtilization < 5% for 2 minutes"
