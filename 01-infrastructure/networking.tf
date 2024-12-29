@@ -37,7 +37,7 @@ resource "aws_route" "default_route" {
 resource "aws_subnet" "flask-subnet-1" {
   vpc_id                  = aws_vpc.flask-vpc.id            # VPC to associate with the subnet
   cidr_block              = "10.0.0.0/26"                   # CIDR block for the subnet
-  map_public_ip_on_launch = false                           # Automatically assign public IPs
+  map_public_ip_on_launch = true                            # Automatically assign public IPs
   availability_zone       = "us-east-2a"                    # Availability zone
   tags = {
     Name = "flask-subnet-1"                                 # Tag for easy identification
@@ -48,7 +48,7 @@ resource "aws_subnet" "flask-subnet-1" {
 resource "aws_subnet" "flask-subnet-2" {
   vpc_id                  = aws_vpc.flask-vpc.id            # VPC to associate with the subnet
   cidr_block              = "10.0.0.64/26"                  # CIDR block for the subnet
-  map_public_ip_on_launch = false                           # Automatically assign public IPs
+  map_public_ip_on_launch = true                            # Automatically assign public IPs
   availability_zone       = "us-east-2b"                    # Availability zone
   tags = {
     Name = "flask-subnet-2"                                 # Tag for easy identification

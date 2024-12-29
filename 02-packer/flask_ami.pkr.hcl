@@ -57,6 +57,7 @@ source "amazon-ebs" "flask_ami" {
 
   tags = {
     ResourceGroup = "flask-asg-rg"               # Tag for resource manager
+    Name          = "flask_server_ami_${replace(timestamp(), ":", "-")}"  
   }
 }
 
