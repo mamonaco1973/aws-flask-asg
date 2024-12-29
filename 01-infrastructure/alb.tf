@@ -32,6 +32,11 @@ resource "aws_lb_target_group" "fask_alb_tg" {
     unhealthy_threshold = 2                       # Threshold for marking unhealthy
     matcher             = "200,300-310"           # Expected HTTP response codes
   }
+
+  tags = {
+    Name          = "flask-alb-tg"                # Tag for resource identification
+    ResourceGroup = "flask-asg-rg"                # Tag for resource manager
+  }
 }
 
 # HTTP listener for the ALB

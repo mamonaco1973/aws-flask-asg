@@ -25,7 +25,7 @@ resource "aws_launch_template" "flask_launch_template" {
 
   # Network settings
   network_interfaces {
-    associate_public_ip_address = false          # Assign public IP
+    associate_public_ip_address = true           # Assign public IP
     delete_on_termination       = true           # Delete interface on instance termination
     security_groups             = [              # Security groups for network access
       aws_security_group.flask_sg_https.id,
