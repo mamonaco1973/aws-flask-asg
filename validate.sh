@@ -28,7 +28,7 @@ while true; do
         cd ./02-packer/scripts # Navigate to the test scripts directory.
         echo "NOTE: Testing the EC2 Solution"
 
-        dns_name=$(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='challenge-alb'].DNSName" --output text) 
+        dns_name=$(aws elbv2 describe-load-balancers --query "LoadBalancers[?LoadBalancerName=='flask-alb'].DNSName" --output text) 
         echo "NOTE: URL for EC2 Solution is http://$dns_name/gtg?details=true"
 
         ./test_candidates.py $dns_name                                                                                            
