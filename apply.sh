@@ -11,3 +11,7 @@ export AWS_DEFAULT_REGION="us-east-2"
 ./apply_phase_1.sh
 ./apply_phase_2.sh
 ./apply_phase_3.sh
+
+echo "NOTE: Validating Build"
+./validate.sh
+
