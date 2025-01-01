@@ -1,14 +1,14 @@
 # CloudWatch Alarm to scale up the Auto Scaling Group when CPU utilization exceeds 80%
 resource "aws_cloudwatch_metric_alarm" "cpu_high" {
-  alarm_name          = "HighCPUUtilization"                       # Alarm name
+  alarm_name          = "HighCPUUtilization"                      # Alarm name
   comparison_operator = "GreaterThanThreshold"                    # Trigger when metric exceeds threshold
-  evaluation_periods  = 2                                          # Consecutive periods to breach threshold
+  evaluation_periods  = 2                                         # Consecutive periods to breach threshold
   metric_name         = "CPUUtilization"                          # Metric to monitor
   namespace           = "AWS/EC2"                                 # AWS namespace for the metric
   period              = 30                                        # Duration of each evaluation period (seconds)
   statistic           = "Average"                                 # Aggregation type for the metric
-  threshold           = 80                                        # Threshold for triggering the alarm
-  alarm_description   = "Scale up if CPUUtilization > 80% for 2 minutes"
+  threshold           = 60                                        # Threshold for triggering the alarm
+  alarm_description   = "Scale up if CPUUtilization > 60% for 1 minute"
   actions_enabled     = true                                      # Enable alarm actions
 
   # Metric dimensions to associate the alarm with the Auto Scaling Group
@@ -32,13 +32,13 @@ resource "aws_autoscaling_policy" "scale_up_policy" {
 resource "aws_cloudwatch_metric_alarm" "cpu_low" {
   alarm_name          = "LowCPUUtilization"                       # Alarm name
   comparison_operator = "LessThanThreshold"                       # Trigger when metric falls below threshold
-  evaluation_periods  = 2                                         # Consecutive periods to breach threshold
+  evaluation_periods  = 10                                        # Consecutive periods to breach threshold
   metric_name         = "CPUUtilization"                          # Metric to monitor
   namespace           = "AWS/EC2"                                 # AWS namespace for the metric
   period              = 30                                        # Duration of each evaluation period (seconds)
   statistic           = "Average"                                 # Aggregation type for the metric
-  threshold           = 5                                         # Threshold for triggering the alarm
-  alarm_description   = "Scale down if CPUUtilization < 5% for 2 minutes"
+  threshold           = 60                                        # Threshold for triggering the alarm
+  alarm_description   = "Scale down if CPUUtilization < 60% for 5 minutes"
   actions_enabled     = true                                      # Enable alarm actions
 
   # Metric dimensions to associate the alarm with the Auto Scaling Group

@@ -10,7 +10,13 @@ chmod +x /flask/start_flask_app.sh
 
 # Install the Python 3 pip package manager using the Amazon Linux package manager `yum`.
 # The `-y` flag automatically answers "yes" to any prompts, ensuring a non-interactive installation.
-sudo yum install -y python3-pip stress
+sudo yum install -y python3-pip stress dos2unix
+
+# Even out any windows LF issues
+
+dos2unix /flask/start_flask_app.sh
+dos2unix /flask/app.py
+dos2unix /flask/test_candidates.py
 
 # Install the Python dependencies listed in the `requirements.txt` file located in the /flask directory.
 # `pip3` refers to the Python 3 version of pip. The `-r` flag specifies the requirements file.
