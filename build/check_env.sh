@@ -1,8 +1,6 @@
 #!/bin/bash
 
-echo ""
-echo "NOTE: Validating that required commands are found."
-echo ""
+echo "NOTE: Validating that required commands are found in your PATH."
 # List of required commands
 commands=("aws" "packer" "terraform")
 
@@ -21,15 +19,12 @@ done
 
 # Final status
 if [ "$all_found" = true ]; then
-  echo ""
   echo "NOTE: All required commands are available."
 else
-  echo ""
   echo "ERROR: One or more commands are missing."
   exit 1
 fi
 
-echo ""
 echo "NOTE: Checking AWS cli connection."
 
 aws sts get-caller-identity --query "Account" --output text >> /dev/null
