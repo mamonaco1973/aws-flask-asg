@@ -21,7 +21,7 @@ def gtg():
     details = request.args.get("details")
 
     if ("details" in request.args):
-        return {"MODIFIED connected": "true", "instance-id": instance_id}, 200
+        return {"connected": "true", "instance-id": instance_id}, 200
     else:
         return Response(status = 200)
 
