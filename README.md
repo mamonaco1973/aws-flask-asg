@@ -62,7 +62,13 @@ Terraform has been successfully initialized!
 [...]
 ```
 
-## Tour of Build
+The build is divided in three phases:
+
+1.  Phase 1 builds all the infrastructure with a generic launch template using Terraform.
+2.  Phase 2 builds the flask services into an AMI using the network elements created in Phase 1.
+3.  Phase 3 creates new launch template using the AMI from Phase 2 and sets the desired of instances to 2, the minimum number of instances as 2 and the maximum number of instances to 4.
+
+## Tour of Build Output in the AWS Console
 
 Most of the build can be accessed on the **EC2** section of the AWS Console, where you will find the following key elements:
 
@@ -95,25 +101,27 @@ Copy the value from validate `http://flask-alb-1771338256.us-east-2.elb.amazonaw
 
 ![Postman](postman.png)
 
-### `/gtg` (GET)
+### HTTP Endpoint Summary
+
+#### `/gtg` (GET)
 - **Purpose**: Health check.
 - **Response**: 
   - `{"connected": "true", "instance-id": <instance_id>}` (if `details` query parameter is provided).
   - 200 OK with no body otherwise.
 
-### `/candidate/<name>` (GET)
+#### `/candidate/<name>` (GET)
 - **Purpose**: Retrieve a candidate by name.
 - **Response**: 
   - Candidate details (JSON) with status `200`.
   - `"Not Found"` with status `404` if no candidate is found.
 
-### `/candidate/<name>` (POST)
+#### `/candidate/<name>` (POST)
 - **Purpose**: Add or update a candidate by name.
 - **Response**: 
   - `{"CandidateName": <name>}` with status `200`.
   - `"Unable to update"` with status `500` on failure.
 
-### `/candidates` (GET)
+#### `/candidates` (GET)
 - **Purpose**: Retrieve all candidates.
 - **Response**: 
   - List of candidates (JSON) with status `200`.
