@@ -169,7 +169,7 @@ The Autoscaling Group that was created has the following scaling policies define
 6. **Scalability Boundaries**:
    - The ASG allows scaling between a **minimum size** (`min_size`) and a **maximum size** (`max_size = 4`).
 
-We will access the instances and execute the `stress` command to simulate a high CPU load. This process will demonstrate the system's ability to dynamically scale up by adding nodes in response to increased CPU utilization and subsequently scale down by removing nodes as the load decreases
+We will access the EC2 instances and execute the `stress` command to simulate a high CPU load. This process will demonstrate the system's ability to dynamically scale up by adding nodes in response to increased CPU utilization and subsequently scale down by removing nodes as the load decreases
 
 
 ## Run the "destroy" script when you are done
