@@ -62,11 +62,17 @@ Terraform has been successfully initialized!
 [...]
 ```
 
-The build is divided in three phases:
+### Build Process Overview
 
-1.  Phase 1 builds all the infrastructure with a generic launch template using Terraform.
-2.  Phase 2 builds the flask services into an AMI using the network elements created in Phase 1.
-3.  Phase 3 creates new launch template using the AMI from Phase 2 and sets the desired of instances to 2, the minimum number of instances as 2 and the maximum number of instances to 4.
+The build process is divided into three phases:
+
+1. **Phase 1:** Use Terraform to provision all infrastructure with a generic launch template.
+2. **Phase 2:** Build the Flask services into an AMI using the network elements created in Phase 1.
+3. **Phase 3:** Create a new launch template using the AMI from Phase 2, and configure the instance scaling parameters:
+   - Desired number of instances: 2
+   - Minimum number of instances: 2
+   - Maximum number of instances: 4
+
 
 ## Tour of Build Output in the AWS Console
 
