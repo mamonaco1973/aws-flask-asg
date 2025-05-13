@@ -1,6 +1,8 @@
 #!/bin/bash
 
 # Configuration
+export AWS_DEFAULT_REGION=us-east-2
+
 TARGET_GROUP_NAME="flask-alb-tg"
 MAX_WAIT_TIME=300 # 5 minutes in seconds
 INTERVAL=10       # Check every 10 seconds
